@@ -261,7 +261,8 @@ class BrevilleApiClient:
     async def set_appliance_name(self, serial: str, name: str) -> dict[str, Any]:
         """Set the appliance name."""
         logger.info("Setting appliance name to %s for %s", name, serial)
-        return await self.set_coffee_params(serial, {"cfg": {"applianceName": name}})
+        path = f"{APPLIANCE_API_BASE}/appliances/{serial}/name"
+        return await self.request("POST", path, json={"applianceName": name})
 
     async def set_work_light_brightness(self, serial: str, brightness: int) -> dict[str, Any]:
         """Set the work light (cup warmer) brightness (0-100)."""
