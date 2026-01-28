@@ -312,6 +312,9 @@ class BrevilleWsClient:
             await self._ws.close()
             self._ws = None
 
+        self._state_cache.clear()
+        self._appliances.clear()
+
         logger.info("WebSocket disconnected")
 
     async def listen(self, auto_reconnect: bool = True) -> AsyncIterator[dict[str, Any]]:

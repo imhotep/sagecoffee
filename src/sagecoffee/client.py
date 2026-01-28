@@ -268,6 +268,8 @@ class SageCoffeeClient:
 
         await self._auth_client.close()
 
+        self._appliances = None
+
     # Authentication methods
 
     async def bootstrap(self, username: str, password: str) -> TokenSet:
